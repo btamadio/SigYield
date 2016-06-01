@@ -97,7 +97,7 @@ sigLabels= ['#splitline{#splitline{n_{fatjet} #geq 4}{M_{J}^{#Sigma} > 600 GeV}}
 
 catLatex = [ROOT.TLatex() for label in catLabels]
 sigLatex = [ROOT.TLatex() for label in sigLabels]
-outFile = ROOT.TFile.Open('yield_plots.root','RECREATE')
+outFile = ROOT.TFile.Open('yield_plots_'+args.outDir+'.root','RECREATE')
 
 cutflowList = [ROOT.TH2D('cutflow_'+str(i),cuts[i],21,1050,2100,240,-200,2200) for i in range(len(cuts))]
 effList = [ROOT.TH2D('eff_'+str(i),cuts[i]+' efficiency',21,1050,2100,240,-200,2200) for i in range(len(cuts))]
@@ -109,10 +109,10 @@ c = [ROOT.TCanvas('c'+str(i),cuts[i],800,600) for i in range(len(cuts))]
 c2 = [ROOT.TCanvas('c_2_'+str(i),cuts[i]+' eff.',800,600) for i in range(len(cuts))]
 c3 = [ROOT.TCanvas('c_3_'+str(i),eventCats[i],800,600) for i in range(len(eventCats))]
 c4 = [ROOT.TCanvas('c_4_'+str(i),sigDefs[i],800,600) for i in range(len(sigDefs))]
-
+isRPV6 = False
 lumiLatex = ROOT.TLatex()
-for file in fileList:
-    f = ROOT.TFile.Open(file)
+for fi in fileList:
+    f = ROOT.TFile.Open(fi)
     if not f:
         print 'File not found',f
         sys.exit(1)
@@ -122,12 +122,16 @@ for file in fileList:
     if not h or not hEC:
         print 'cutflow hist not found',f
         sys.exit(1)
-    dsid = int( file.split('.')[0].split('_')[1] )
+    dsid = int( fi.split('.')[0].split('_')[1] )
     mG = pointDict[dsid][0]
     mX = pointDict[dsid][1]
     dsidHist.Fill(mG,mX,dsid)
-    #skip RPV6 at the moment
-    if mX > 10:
+
+    if mX == 0:
+        isRPV6 = True
+        mX = 1000
+
+    if 1==1:
         for i in range(len(cuts)):
             cutflowList[i].Fill(mG,mX,h.GetBinContent(i+1))
             if i == 0:
@@ -153,6 +157,10 @@ for i in range(len(cutflowList)):
     c[i].cd()
     cutflowList[i].SetMarkerSize(2.2)
     cutflowList[i].Draw('text')
+    if isRPV6:
+        cutflowList[i].GetYaxis().SetLabelOffset(999)
+        cutflowList[i].GetYaxis().SetLabelSize(0)
+        cutflowList[i].GetYaxis().SetTitle('')
     ROOT.ATLASLabel(0.2,0.85,'Internal')
     lumiLatex.DrawLatexNDC(0.65,0.825,'#int L dt = 6.0 fb^{-1}')
     c[i].SaveAs('/global/project/projectdirs/atlas/www/multijet/RPV/btamadio/SignalYields/'+args.outDir+'/0'+str(j)+'_'+cuts[i]+'.pdf')
@@ -162,6 +170,10 @@ for i in range(len(effList)):
     c2[i].cd()
     effList[i].SetMarkerSize(2.2)
     effList[i].Draw('text')
+    if isRPV6:
+        effList[i].GetYaxis().SetLabelOffset(999)
+        effList[i].GetYaxis().SetLabelSize(0)
+        effList[i].GetYaxis().SetTitle('')
     ROOT.ATLASLabel(0.2,0.85,'Internal')
     lumiLatex.DrawLatexNDC(0.65,0.825,'#int L dt = 6.0 fb^{-1}')
     if j < 10:
@@ -187,6 +199,10 @@ for i in range(len(sigDefList)):
     c4[i].cd()
     sigDefList[i].SetMarkerSize(2.2)
     sigDefList[i].Draw('text')
+    if isRPV6:
+        sigDefList[i].GetYaxis().SetLabelOffset(999)
+        sigDefList[i].GetYaxis().SetLabelSize(0)
+        sigDefList[i].GetYaxis().SetTitle('')
     ROOT.ATLASLabel(0.2,0.85,'Internal')
     lumiLatex.DrawLatexNDC(0.65,0.825,'#int L dt = 6.0 fb^{-1}')
     sigLatex[i].DrawLatexNDC(0.2,0.68,sigLabels[i])
