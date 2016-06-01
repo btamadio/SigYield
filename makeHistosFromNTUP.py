@@ -42,45 +42,52 @@ h_cutflow.GetXaxis().SetBinLabel(5,'n_{fatjet} #geq 5')
 h_cutflow.GetXaxis().SetBinLabel(6,'b-tag')
 h_cutflow.GetXaxis().SetBinLabel(7,'M_{J} > 800 GeV')
 
-h_eventCat = ROOT.TH1F('h_eventcat','event categories',12,0.5,12.5)
-
+h_eventCat = ROOT.TH1F('h_eventcat','event categories',18,0.5,18.5)
 h_eventCat.GetXaxis().SetBinLabel(1,'= 3 jet, b-veto, total')
 h_eventCat.GetXaxis().SetBinLabel(2,'= 3 jet, b-tag, total')
-h_eventCat.GetXaxis().SetBinLabel(3,'= 3 jet, b-inclusive, total')
-
+h_eventCat.GetXaxis().SetBinLabel(3,'= 3 jet, b-inc, total')
 h_eventCat.GetXaxis().SetBinLabel(4,'= 3 jet, b-veto, 200 < MJ < 600')
 h_eventCat.GetXaxis().SetBinLabel(5,'= 3 jet, b-tag, 200 < MJ < 600')
-h_eventCat.GetXaxis().SetBinLabel(6,'= 3 jet, b-inclusive, 200 < MJ < 600')
-
+h_eventCat.GetXaxis().SetBinLabel(6,'= 3 jet, b-inc, 200 < MJ < 600')
 h_eventCat.GetXaxis().SetBinLabel(7,'= 4 jet, b-veto, total')
 h_eventCat.GetXaxis().SetBinLabel(8,'= 4 jet, b-tag, total')
-h_eventCat.GetXaxis().SetBinLabel(9,'= 4 jet, b-inclusive, total')
-
+h_eventCat.GetXaxis().SetBinLabel(9,'= 4 jet, b-inc, total')
 h_eventCat.GetXaxis().SetBinLabel(10,'= 4 jet, b-veto, 200 < MJ < 600')
 h_eventCat.GetXaxis().SetBinLabel(11,'= 4 jet, b-tag, 200 < MJ < 600')
-h_eventCat.GetXaxis().SetBinLabel(12,'= 4 jet, b-inclusive, 200 < MJ < 600')
-
+h_eventCat.GetXaxis().SetBinLabel(12,'= 4 jet, b-inc, 200 < MJ < 600')
 h_eventCat.GetXaxis().SetBinLabel(13,'#geq 5 jet, b-veto, total')
 h_eventCat.GetXaxis().SetBinLabel(14,'#geq 5 jet, b-tag, total')
-h_eventCat.GetXaxis().SetBinLabel(15,'#geq 5 jet, b-inclusive, total')
-
+h_eventCat.GetXaxis().SetBinLabel(15,'#geq 5 jet, b-inc, total')
 h_eventCat.GetXaxis().SetBinLabel(16,'#geq 5 jet, b-veto, 200 < MJ < 600')
 h_eventCat.GetXaxis().SetBinLabel(17,'#geq 5 jet, b-tag, 200 < MJ < 600')
-h_eventCat.GetXaxis().SetBinLabel(18,'#geq 5 jet, b-inclusive, 200 < MJ < 600')
+h_eventCat.GetXaxis().SetBinLabel(18,'#geq 5 jet, b-inc, 200 < MJ < 600')
 
-nEntries = t.GetEntries()
 
-h_sigYield = ROOT.TH1F('h_sigyield','signal yield',10,0.5,10.5)
-h_sigYield.GetXaxis().SetBinLabel(1,'n_{fatjet} #geq 4, M_{J}^{#Sigma} > 0.6 TeV')
-h_sigYield.GetXaxis().SetBinLabel(2,'n_{fatjet} #geq 4, M_{J}^{#Sigma} > 0.65 TeV')
-h_sigYield.GetXaxis().SetBinLabel(3,'n_{fatjet} #geq 4, M_{J}^{#Sigma} > 0.7 TeV')
-h_sigYield.GetXaxis().SetBinLabel(4,'n_{fatjet} #geq 4, M_{J}^{#Sigma} > 0.75 TeV')
-h_sigYield.GetXaxis().SetBinLabel(5,'n_{fatjet} #geq 4, M_{J}^{#Sigma} > 0.8 TeV')
-h_sigYield.GetXaxis().SetBinLabel(6,'n_{fatjet} #geq 5, M_{J}^{#Sigma} > 0.6 TeV')
-h_sigYield.GetXaxis().SetBinLabel(7,'n_{fatjet} #geq 5, M_{J}^{#Sigma} > 0.65 TeV')
-h_sigYield.GetXaxis().SetBinLabel(8,'n_{fatjet} #geq 5, M_{J}^{#Sigma} > 0.7 TeV')
-h_sigYield.GetXaxis().SetBinLabel(9,'n_{fatjet} #geq 5, M_{J}^{#Sigma} > 0.75 TeV')
-h_sigYield.GetXaxis().SetBinLabel(10,'n_{fatjet} #geq 5, M_{J}^{#Sigma} > 0.8 TeV')
+h_sigYield = ROOT.TH1F('h_sigyield','signal yield',20,0.5,20.5)
+h_sigYield.GetXaxis().SetBinLabel(1,'n_{fatjet} #geq 4, b-tag, M_{J}^{#Sigma} > 0.6 TeV')
+h_sigYield.GetXaxis().SetBinLabel(2,'n_{fatjet} #geq 4, b-tag, M_{J}^{#Sigma} > 0.65 TeV')
+h_sigYield.GetXaxis().SetBinLabel(3,'n_{fatjet} #geq 4, b-tag, M_{J}^{#Sigma} > 0.7 TeV')
+h_sigYield.GetXaxis().SetBinLabel(4,'n_{fatjet} #geq 4, b-tag, M_{J}^{#Sigma} > 0.75 TeV')
+h_sigYield.GetXaxis().SetBinLabel(5,'n_{fatjet} #geq 4, b-tag, M_{J}^{#Sigma} > 0.8 TeV')
+
+h_sigYield.GetXaxis().SetBinLabel(6,'n_{fatjet} #geq 4, b-inc, M_{J}^{#Sigma} > 0.6 TeV')
+h_sigYield.GetXaxis().SetBinLabel(7,'n_{fatjet} #geq 4, b-inc, M_{J}^{#Sigma} > 0.65 TeV')
+h_sigYield.GetXaxis().SetBinLabel(8,'n_{fatjet} #geq 4, b-inc, M_{J}^{#Sigma} > 0.7 TeV')
+h_sigYield.GetXaxis().SetBinLabel(9,'n_{fatjet} #geq 4, b-inc, M_{J}^{#Sigma} > 0.75 TeV')
+h_sigYield.GetXaxis().SetBinLabel(10,'n_{fatjet} #geq 4, b-inc, M_{J}^{#Sigma} > 0.8 TeV') 
+
+h_sigYield.GetXaxis().SetBinLabel(11,'n_{fatjet} #geq 5, b-tag, M_{J}^{#Sigma} > 0.6 TeV')
+h_sigYield.GetXaxis().SetBinLabel(12,'n_{fatjet} #geq 5, b-tag, M_{J}^{#Sigma} > 0.65 TeV')
+h_sigYield.GetXaxis().SetBinLabel(13,'n_{fatjet} #geq 5, b-tag, M_{J}^{#Sigma} > 0.7 TeV')
+h_sigYield.GetXaxis().SetBinLabel(14,'n_{fatjet} #geq 5, b-tag, M_{J}^{#Sigma} > 0.75 TeV')
+h_sigYield.GetXaxis().SetBinLabel(15,'n_{fatjet} #geq 5, b-tag, M_{J}^{#Sigma} > 0.8 TeV')
+
+h_sigYield.GetXaxis().SetBinLabel(16,'n_{fatjet} #geq 5, b-inc, M_{J}^{#Sigma} > 0.6 TeV')
+h_sigYield.GetXaxis().SetBinLabel(17,'n_{fatjet} #geq 5, b-inc, M_{J}^{#Sigma} > 0.65 TeV')
+h_sigYield.GetXaxis().SetBinLabel(18,'n_{fatjet} #geq 5, b-inc, M_{J}^{#Sigma} > 0.7 TeV')
+h_sigYield.GetXaxis().SetBinLabel(19,'n_{fatjet} #geq 5, b-inc, M_{J}^{#Sigma} > 0.75 TeV')
+h_sigYield.GetXaxis().SetBinLabel(20,'n_{fatjet} #geq 5, b-inc, M_{J}^{#Sigma} > 0.8 TeV') 
+
 
 h_MJ3 = ROOT.TH1F('h_MJ3','M_{J}^{#Sigma}, n_{fatjet} #geq 3',15,0,1500)
 h_MJ = ROOT.TH1F('h_MJ','M_{J}^{#Sigma}',15,0,1500)
@@ -97,6 +104,7 @@ fatjetMpTCut = 0.8
 lumi = 6.0
 
 denom=0
+nEntries = t.GetEntries()
 for entry in range(nEntries):
     t.GetEntry(entry)
     denom+=t.weight_jet_SFFix70[0]
@@ -116,10 +124,12 @@ for entry in range(nEntries):
     if args.rescale:
         xsec = pointDict[int(dsid)][2]
         rescale= xsec/t.weight_xs
-    print rescale
     w = t.weight_jet_SFFix70.at(0)*rescale*1E6*lumi*t.weight/denom
+    #all events in derivation
     h_cutflow.Fill(iCut,w)
     iCut+=1
+
+    #pass trigger
     for passedTrig in t.passedTriggers:
         for trig in trigs:
             if trig == passedTrig:
@@ -128,6 +138,8 @@ for entry in range(nEntries):
         continue
     h_cutflow.Fill(iCut,w)
     iCut+=1
+
+    #pass ht and ptlead cuts
     for i in range(t.jet_clean_passLooseBad.size()):
         if t.jet_pt.at(i) > jetPtCut and abs(t.jet_eta.at(i)) < jetEtaCut and t.jet_clean_passLooseBad.at(i) == 1:
             ht+=t.jet_pt.at(i)
@@ -135,19 +147,16 @@ for entry in range(nEntries):
                 passLeadJet = True
             if t.jet_isFix70.at(i) == 1:
                 nBTag += 1
-
     if ht < htCut:
-        # print 'Event %i failed HT cut with HT = %f' % (t.eventNumber,ht)
-        # for i in range(t.jet_clean_passLooseBad.size()):
-        #     print 'jet %i has pt = %f, eta = %f, clean = %i' % (i,t.jet_pt.at(i),t.jet_eta.at(i),t.jet_clean_passLooseBad.at(i))
         continue
-
     h_cutflow.Fill(iCut,w)
     iCut+=1
     if not passLeadJet:
         continue
     h_cutflow.Fill(iCut,w)
     iCut+=1
+
+    #calculate MJ and count fat jets
     ptMList = []
     for i in range(t.fatjet_pt.size()):
         if t.fatjet_pt.at(i) > fatJetPtCut and abs(t.fatjet_eta.at(i)) < fatJetEtaCut and t.fatjet_m.at(i)/t.fatjet_pt.at(i) < fatjetMpTCut:
@@ -156,52 +165,58 @@ for entry in range(nEntries):
     ptMList.sort(key=lambda tup: tup[0], reverse = True)
     for mi in ptMList[0:min(4,len(ptMList))]:
         mj += mi[1]
+    
+    #fill NR yields
     if nFatJet == 3:
-        if 200 < mj < 600:
+        if nBTag == 0:
+            h_eventCat.Fill(1,w)
+        else:
+            h_eventCat.Fill(2,w)
+        h_eventCat.Fill(3,w)
+        if mj > 200 and mj < 600:
             if nBTag == 0:
-                eventCat = 1
+                h_eventCat.Fill(4,w)
             else:
-                eventCat = 2
-        elif mj > 800:
-            if nBTag == 0:
-                eventCat = 7
-            else:
-                eventCat = 8
+                h_eventCat.Fill(5,w)
+            h_eventCat.Fill(6,w)
     if nFatJet == 4:
-        if 200 < mj < 600:
+        if nBTag == 0:
+            h_eventCat.Fill(7,w)
+        else:
+            h_eventCat.Fill(8,w)
+        h_eventCat.Fill(9,w)
+        if mj > 200 and mj < 600:
             if nBTag == 0:
-                eventCat = 3
+                h_eventCat.Fill(10,w)
             else:
-                eventCat = 4
-        elif mj > 800:
-            if nBTag == 0:
-                eventCat = 9
-            else:
-                eventCat = 10
+                h_eventCat.Fill(11,w)
+            h_eventCat.Fill(12,w)
     if nFatJet >= 5:
-        if 200 < mj < 600:
+        if nBTag == 0:
+            h_eventCat.Fill(13,w)
+        else:
+            h_eventCat.Fill(14,w)
+        h_eventCat.Fill(15,w)
+        if mj > 200 and mj < 600:
             if nBTag == 0:
-                eventCat = 5
+                h_eventCat.Fill(16,w)
             else:
-                eventCat = 6
-        elif mj > 800:
-            if nBTag == 0:
-                eventCat = 11
-            else:
-                eventCat = 12
-    h_eventCat.Fill(eventCat,w)
+                h_eventCat.Fill(17,w)
+            h_eventCat.Fill(18,w)
+    
+    #Fill SR yields
     if nFatJet >= 4:
-        if mj > 600:
-            h_sigYield.Fill(1,w)
-        if mj > 650:
-            h_sigYield.Fill(2,w)
-        if mj > 700:
-            h_sigYield.Fill(3,w)
-        if mj > 750:
-            h_sigYield.Fill(4,w)
-        if mj > 800:
-            h_sigYield.Fill(5,w)
-    if nFatJet >= 5:
+        if nBTag >= 1:
+            if mj > 600:
+                h_sigYield.Fill(1,w)
+            if mj > 650:
+                h_sigYield.Fill(2,w)
+            if mj > 700:
+                h_sigYield.Fill(3,w)
+            if mj > 750:
+                h_sigYield.Fill(4,w)
+            if mj > 800:
+                h_sigYield.Fill(5,w)
         if mj > 600:
             h_sigYield.Fill(6,w)
         if mj > 650:
@@ -212,6 +227,29 @@ for entry in range(nEntries):
             h_sigYield.Fill(9,w)
         if mj > 800:
             h_sigYield.Fill(10,w)
+    if nFatJet >= 5:
+        if nBTag >= 1:
+            if mj > 600:
+                h_sigYield.Fill(11,w)
+            if mj > 650:
+                h_sigYield.Fill(12,w)
+            if mj > 700:
+                h_sigYield.Fill(13,w)
+            if mj > 750:
+                h_sigYield.Fill(14,w)
+            if mj > 800:
+                h_sigYield.Fill(15,w)
+        if mj > 600:
+            h_sigYield.Fill(16,w)
+        if mj > 650:
+            h_sigYield.Fill(17,w)
+        if mj > 700:
+            h_sigYield.Fill(18,w)
+        if mj > 750:
+            h_sigYield.Fill(19,w)
+        if mj > 800:
+            h_sigYield.Fill(20,w)
+
     if nFatJet >= 3 and nBTag >= 1:
         h_MJ3.Fill(mj,w)
     if nFatJet < 5:
@@ -224,9 +262,6 @@ for entry in range(nEntries):
     iCut+=1
     h_MJ.Fill(mj,w)
     if mj < 800:
-#        print 'Event %i failed MJ cut with MJ = %f' % (t.eventNumber,mj)
-#        print ptMList
-#        print ptMList[0:min(4,len(ptMList))]
         continue
     h_cutflow.Fill(iCut,w)
 
