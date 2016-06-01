@@ -12,7 +12,7 @@ f = ROOT.TFile.Open(args.input)
 if not f:
     print 'File not found. Exiting.',f
     sys.exit(1)
-#print 'file: ',args.input
+print 'file: ',args.input
 #print 'tree name: ',args.treeName
 t = f.Get('outTree/'+args.treeName)
 if not t:
@@ -25,7 +25,6 @@ for key in f.GetListOfKeys():
         mdHistName = key.GetName()
         dsid = mdHistName.split('_')[2]
         print 'DSID: %s nEntries = %i SumOfWeights = %i' %(dsid,t.GetEntries(),f.Get(mdHistName).GetBinContent(3))
-        sys.exit(0)
 if not mdHistName:
     print 'MetaData Hist not found. Exiting.'
     sys.exit(1)
