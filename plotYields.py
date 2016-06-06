@@ -6,52 +6,52 @@ ROOT.gROOT.LoadMacro('/global/homes/b/btamadio/atlasstyle/AtlasLabels.C')
 ROOT.SetAtlasStyle()
 ROOT.gStyle.SetPaintTextFormat('2.1f')
 
-parser = argparse.ArgumentParser(add_help=False, description='Print DIDs')
+parser = argparse.ArgumentParser(add_help=False, description='Plot Yields')
 parser.add_argument('input')
 parser.add_argument('--outDir',dest='outDir',type=str,default='RPV10')
 args = parser.parse_args()
 fileList = glob.glob(args.input+'*')
 #these will be put into the output file names
 cuts = ['derivation','trigger','HT','pT_lead','n_fatjet_5','btag','MJ_800']
-eventCats = ['3jet_bveto_total',
-             '3jet_btag_total',
-             '3jet_binc_total',
-             '3jet_bveto_NR',
-             '3jet_btag_NR',
-             '3jet_binc_NR',
-             '4jet_bveto_total',
-             '4jet_btag_total',
-             '4jet_binc_total',
-             '4jet_bveto_NR',
-             '4jet_btag_NR',
-             '4jet_binc_NR',
-             '5jet_bveto_total',
-             '5jet_btag_total',
-             '5jet_binc_total',
-             '5jet_bveto_NR',
-             '5jet_btag_NR',
-             '5jet_binc_NR']
+eventCats = ['MJ_000_13000_b0_n3',
+             'MJ_000_13000_b1_n3',
+             'MJ_000_13000_b9_n3',
+             'MJ_200_600_b0_n3',
+             'MJ_200_600_b1_n3',
+             'MJ_200_600_b9_n3',
+             'MJ_000_13000_b0_n4',
+             'MJ_000_13000_b1_n4',
+             'MJ_000_13000_b9_n4',
+             'MJ_200_600_b0_n4',
+             'MJ_200_600_b1_n4',
+             'MJ_200_600_b9_n4',
+             'MJ_000_13000_b0_n5',
+             'MJ_000_13000_b1_n5',
+             'MJ_000_13000_b9_n5',
+             'MJ_200_600_b0_n5',
+             'MJ_200_600_b1_n5',
+             'MJ_200_600_b9_n5']
 
-sigDefs = ['njet_4_btag_mj_600',
-'njet_4_btag_mj_650',
-'njet_4_btag_mj_700',
-'njet_4_btag_mj_750',
-'njet_4_btag_mj_800',
-'njet_4_binc_mj_600',
-'njet_4_binc_mj_650',
-'njet_4_binc_mj_700',
-'njet_4_binc_mj_750',
-'njet_4_binc_mj_800',
-'njet_5_btag_mj_600',
-'njet_5_btag_mj_650',
-'njet_5_btag_mj_700',
-'njet_5_btag_mj_750',
-'njet_5_btag_mj_800',
-'njet_5_binc_mj_600',
-'njet_5_binc_mj_650',
-'njet_5_binc_mj_700',
-'njet_5_binc_mj_750',
-'njet_5_binc_mj_800']
+sigDefs = ['MJ_600_13000_b1_n4',
+           'MJ_650_13000_b1_n4',
+           'MJ_700_13000_b1_n4',
+           'MJ_750_13000_b1_n4',
+           'MJ_800_13000_b1_n4',
+           'MJ_600_13000_b9_n4',
+           'MJ_650_13000_b9_n4',
+           'MJ_700_13000_b9_n4',
+           'MJ_750_13000_b9_n4',
+           'MJ_800_13000_b9_n4',
+           'MJ_600_13000_b1_n5',
+           'MJ_650_13000_b1_n5',
+           'MJ_700_13000_b1_n5',
+           'MJ_750_13000_b1_n5',
+           'MJ_800_13000_b1_n5',
+           'MJ_600_13000_b9_n5',
+           'MJ_650_13000_b9_n5',
+           'MJ_700_13000_b9_n5',
+           'MJ_750_13000_b9_n5',
+           'MJ_800_13000_b9_n5']
 
 #these are for the plot labels
 catLabels = ['#splitline{n_{fatjet} = 3}{b-veto}',
@@ -74,16 +74,16 @@ catLabels = ['#splitline{n_{fatjet} = 3}{b-veto}',
 '#splitline{200 GeV < M_{J}^{#Sigma} < 600 GeV}{#splitline{n_{fatjet} #geq 5}{b-inclusive}}']
 
 
-sigLabels= ['#splitline{#splitline{n_{fatjet} #geq 4}{M_{J}^{#Sigma} > 600 GeV}}{b-tag}',
-'#splitline{#splitline{n_{fatjet} #geq 4}{M_{J}^{#Sigma} > 650 GeV}}{b-tag}',
-'#splitline{#splitline{n_{fatjet} #geq 4}{M_{J}^{#Sigma} > 700 GeV}}{b-tag}',
-'#splitline{#splitline{n_{fatjet} #geq 4}{M_{J}^{#Sigma} > 750 GeV}}{b-tag}',
-'#splitline{#splitline{n_{fatjet} #geq 4}{M_{J}^{#Sigma} > 800 GeV}}{b-tag}',
-'#splitline{#splitline{n_{fatjet} #geq 4}{M_{J}^{#Sigma} > 600 GeV}}{b-inclusive}',
-'#splitline{#splitline{n_{fatjet} #geq 4}{M_{J}^{#Sigma} > 650 GeV}}{b-inclusive}',
-'#splitline{#splitline{n_{fatjet} #geq 4}{M_{J}^{#Sigma} > 700 GeV}}{b-inclusive}',
-'#splitline{#splitline{n_{fatjet} #geq 4}{M_{J}^{#Sigma} > 750 GeV}}{b-inclusive}',
-'#splitline{#splitline{n_{fatjet} #geq 4}{M_{J}^{#Sigma} > 800 GeV}}{b-inclusive}',
+sigLabels= ['#splitline{#splitline{n_{fatjet} = 4}{M_{J}^{#Sigma} > 600 GeV}}{b-tag}',
+'#splitline{#splitline{n_{fatjet} = 4}{M_{J}^{#Sigma} > 650 GeV}}{b-tag}',
+'#splitline{#splitline{n_{fatjet} = 4}{M_{J}^{#Sigma} > 700 GeV}}{b-tag}',
+'#splitline{#splitline{n_{fatjet} = 4}{M_{J}^{#Sigma} > 750 GeV}}{b-tag}',
+'#splitline{#splitline{n_{fatjet} = 4}{M_{J}^{#Sigma} > 800 GeV}}{b-tag}',
+'#splitline{#splitline{n_{fatjet} = 4}{M_{J}^{#Sigma} > 600 GeV}}{b-inclusive}',
+'#splitline{#splitline{n_{fatjet} = 4}{M_{J}^{#Sigma} > 650 GeV}}{b-inclusive}',
+'#splitline{#splitline{n_{fatjet} = 4}{M_{J}^{#Sigma} > 700 GeV}}{b-inclusive}',
+'#splitline{#splitline{n_{fatjet} = 4}{M_{J}^{#Sigma} > 750 GeV}}{b-inclusive}',
+'#splitline{#splitline{n_{fatjet} = 4}{M_{J}^{#Sigma} > 800 GeV}}{b-inclusive}',
 '#splitline{#splitline{n_{fatjet} #geq 5}{M_{J}^{#Sigma} > 600 GeV}}{b-tag}',
 '#splitline{#splitline{n_{fatjet} #geq 5}{M_{J}^{#Sigma} > 650 GeV}}{b-tag}',
 '#splitline{#splitline{n_{fatjet} #geq 5}{M_{J}^{#Sigma} > 700 GeV}}{b-tag}',
@@ -119,7 +119,7 @@ for fi in fileList:
     h = f.Get('h_cutflow')
     hEC = f.Get('h_eventcat')
     hSD = f.Get('h_sigyield')
-    if not h or not hEC:
+    if not h or not hEC or not hSD:
         print 'cutflow hist not found',f
         sys.exit(1)
     dsid = int( fi.split('.')[0].split('_')[1] )
@@ -143,7 +143,11 @@ for fi in fileList:
             cutflowList[i].GetXaxis().SetTitle('m_{#tilde{g}} [GeV]')
             cutflowList[i].GetYaxis().SetTitle('m_{#tilde{#chi}_{1}^{0}} [GeV]')
         for i in range(len(eventCats)):
-            eventCatList[i].Fill(mG,mX,hEC.GetBinContent(i+1))
+            rescale = 1
+#            if 'b0' in eventCats[i]:
+#                rescale = eventCats[i+2].Integral()-eventCats[i+1].Integral()
+#                rescale /= eventCats[i].Integral()
+            eventCatList[i].Fill(mG,mX,rescale*hEC.GetBinContent(i+1))
             eventCatList[i].GetXaxis().SetTitle('m_{#tilde{g}} [GeV]')
             eventCatList[i].GetYaxis().SetTitle('m_{#tilde{#chi}_{1}^{0}} [GeV]')
         for i in range(len(sigDefs)):
@@ -163,7 +167,7 @@ for i in range(len(cutflowList)):
         cutflowList[i].GetYaxis().SetTitle('')
     ROOT.ATLASLabel(0.2,0.85,'Internal')
     lumiLatex.DrawLatexNDC(0.65,0.825,'#int L dt = 6.0 fb^{-1}')
-    c[i].SaveAs('/global/project/projectdirs/atlas/www/multijet/RPV/btamadio/SignalYields/'+args.outDir+'/0'+str(j)+'_'+cuts[i]+'.pdf')
+    c[i].SaveAs('/global/project/projectdirs/atlas/www/multijet/RPV/btamadio/SignalYields/RPV/cutflow_'+args.outDir+'_'+str(i)+'_'+cuts[i]+'.pdf')
 
 for i in range(len(effList)):
     j+=1
@@ -176,10 +180,7 @@ for i in range(len(effList)):
         effList[i].GetYaxis().SetTitle('')
     ROOT.ATLASLabel(0.2,0.85,'Internal')
     lumiLatex.DrawLatexNDC(0.65,0.825,'#int L dt = 6.0 fb^{-1}')
-    if j < 10:
-        c2[i].SaveAs('/global/project/projectdirs/atlas/www/multijet/RPV/btamadio/SignalYields/'+args.outDir+'/0'+str(j)+'_'+cuts[i]+'_efficiency.pdf')
-    else:
-        c2[i].SaveAs('/global/project/projectdirs/atlas/www/multijet/RPV/btamadio/SignalYields/'+args.outDir+'/'+str(j)+'_'+cuts[i]+'_efficiency.pdf')    
+    c2[i].SaveAs('/global/project/projectdirs/atlas/www/multijet/RPV/btamadio/SignalYields/RPV/cutEfficiency_'+args.outDir+'_'+str(i)+'_'+cuts[i]+'.pdf')    
 
 for i in range(len(eventCatList)):
     j+=1
@@ -189,10 +190,7 @@ for i in range(len(eventCatList)):
     ROOT.ATLASLabel(0.2,0.85,'Internal')
     lumiLatex.DrawLatexNDC(0.65,0.825,'#int L dt = 6.0 fb^{-1}')
     catLatex[i].DrawLatexNDC(0.2,0.75,catLabels[i])
-    if j < 10:
-        c3[i].SaveAs('/global/project/projectdirs/atlas/www/multijet/RPV/btamadio/SignalYields/'+args.outDir+'/0'+str(j)+'_'+eventCats[i]+'.pdf')
-    else:
-        c3[i].SaveAs('/global/project/projectdirs/atlas/www/multijet/RPV/btamadio/SignalYields/'+args.outDir+'/'+str(j)+'_'+eventCats[i]+'.pdf')
+    c3[i].SaveAs('/global/project/projectdirs/atlas/www/multijet/RPV/btamadio/SignalYields/RPV/yield_'+args.outDir+'_'+eventCats[i]+'.pdf')
 
 for i in range(len(sigDefList)):
     j+=1
@@ -206,8 +204,4 @@ for i in range(len(sigDefList)):
     ROOT.ATLASLabel(0.2,0.85,'Internal')
     lumiLatex.DrawLatexNDC(0.65,0.825,'#int L dt = 6.0 fb^{-1}')
     sigLatex[i].DrawLatexNDC(0.2,0.68,sigLabels[i])
-    if j < 10:
-        c4[i].SaveAs('/global/project/projectdirs/atlas/www/multijet/RPV/btamadio/SignalYields/'+args.outDir+'/0'+str(j)+'_'+sigDefs[i]+'.pdf')
-    else:
-        c4[i].SaveAs('/global/project/projectdirs/atlas/www/multijet/RPV/btamadio/SignalYields/'+args.outDir+'/'+str(j)+'_'+sigDefs[i]+'.pdf')
-
+    c4[i].SaveAs('/global/project/projectdirs/atlas/www/multijet/RPV/btamadio/SignalYields/RPV/yield_'+args.outDir+'_'+sigDefs[i]+'.pdf')
